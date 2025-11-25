@@ -1,5 +1,5 @@
 # Student-Management-System
-# Student-Management-System
+
 
 ## Overview
 This is a simple Java (AWT) Student Management desktop application that uses MySQL for storage.
@@ -32,3 +32,20 @@ The instructions below create a database called `studentdb` and a table called `
 ```sql
 CREATE DATABASE IF NOT EXISTS studentdb;
 USE studentdb;
+CREATE TABLE IF NOT EXISTS student (
+  s_id INT AUTO_INCREMENT PRIMARY KEY,
+  first_name VARCHAR(100) NOT NULL,
+  last_name VARCHAR(100),
+  dob DATE,
+  gender VARCHAR(10),
+  address VARCHAR(255),
+  phone VARCHAR(20),
+  email VARCHAR(150),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+Class.forName("com.mysql.cj.jdbc.Driver"); // optional for newer JDBC
+String url = "jdbc:mysql://localhost:3306/studentdb?useSSL=false&serverTimezone=UTC";
+String user = "root";
+String pass = "your_db_password";
+Connection con = DriverManager.getConnection(url, user, pass);
+
